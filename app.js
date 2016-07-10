@@ -12,6 +12,7 @@ var toJson = require('./routes/json');
 
 var app = express();
 
+mongoose.connect('mongodb://localhost/shianqi');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
