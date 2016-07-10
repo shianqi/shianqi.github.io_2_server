@@ -6,16 +6,10 @@ var mongoose = require('mongoose');
 var messageSchema = new mongoose.Schema({
     name:String,
     message:String,
-    time:String,
-    viewCount:String
+    time:Date,
+    ip:String,
+    viewCount:Number
 });
-
-// messageSchema.pre('save',function (next) {
-//     if(this.isNew){
-//         this.time = Date.now();
-//     }
-//     next();
-// });
 
 messageSchema.statics ={
     findAll: function (cb) {
