@@ -1,30 +1,26 @@
 /**
- * Created by killer on 2016/7/10.
+ * Created by killer on 2016/7/11.
  */
 var mongoose = require('mongoose');
 
-var messageSchema = new mongoose.Schema({
-    author:String,
-    text:String,
+var visitRecord = new mongoose.Schema({
     time:Date,
     ip:String,
-    color: Number,
-    viewCount:Number,
     header:{}
 });
 
-messageSchema.statics ={
+visitRecord.statics={
     findAll: function (cb) {
         return this
             .find({})
             .sort('time')
             .exec(cb);
     },
-    findById: function (id,cb) {
+    getSize: function (cb) {
         return this
-            .findOne({_id:id})
+            .count()
             .exec(cb);
     }
 };
 
-module.exports = messageSchema;
+module.exports = visitRecord;
