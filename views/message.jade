@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1= title
+    table(border=1)
+        tr
+            th: p ID
+            th: p time
+            th: p nickName
+            th: p message
+            th: p ip
+            th: p user-agent
+            th: p operation
+        for dateItem,i in date
+            tr
+                td= i
+                td= dateItem.time
+                td= dateItem.author
+                td= dateItem.text
+                td= dateItem.ip
+                td= dateItem.header['user-agent']
+                td: a(href="http://www.shianqi.com/delMessage?id="+dateItem.id) 删除
+
+

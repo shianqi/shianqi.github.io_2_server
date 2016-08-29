@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1= title
+    table(border=1)
+        tr
+            th: p ID
+            th: p time
+            th: p ip
+            th: p user-agent
+        for dateItem,i in date
+            tr
+                td= i
+                td= dateItem.time
+                td= dateItem.header.host
+                td= dateItem.header['user-agent']
+
+
