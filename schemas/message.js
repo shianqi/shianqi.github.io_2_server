@@ -24,6 +24,12 @@ messageSchema.statics ={
         return this
             .findOne({_id:id})
             .exec(cb);
+    },
+    delById: function (id, cb) {
+        return this
+            .findOne({_id:id})
+            .remove()
+            .exec(cb);
     }
 };
 

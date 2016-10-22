@@ -71,6 +71,21 @@ router.get('/message', function (req, res, next) {
     }
 });
 
+router.get('/delMessage',function (req, res, next) {
+    if(typeof(req.session.user) != "undefined"){
+        Message.delById(req.query.id,function (err) {
+            if(err){
+                console.log(err);
+            }else{
+                console.log('删除_id='+req.query.id +'留言成功！');
+                res.redirect('/message');
+            }
+        });
+    }else{
+        res.redirect('/login');
+    }
+});
+
 router.post('/addMessage', function (req, res, next){
     var message = new Message({
         author: req.body.author,
